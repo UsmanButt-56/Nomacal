@@ -35,7 +35,7 @@ function Reasons_to_borrow() {
                 <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 mt-10 lg:mt-20 mb-10'>
                     {
                         borrow.map((item) => (
-                            <div key={item.id} className='flex flex-col gap-2'>
+                            <div key={item._id} className='flex flex-col gap-2'>
                                 <h1 className="font-['InterTight'] font-medium text-[10px] leading-[12px] md:text-[16px] md:leading-[22px] lg:text-[18px] lg:leading-[38px] xl:text-[24px] xl:leading-[100%]">{item.title}</h1>
                                 <p className="font-['InterTight'] font-normal text-[10px] leading-[12px] md:text-[12px] md:leading-[22px] lg:text-[14px] lg:leading-[38px] xl:text-[16px] xl:leading-[38px] text-[#FFFFFF80] opacity-50">{item.description}</p>
                             </div>

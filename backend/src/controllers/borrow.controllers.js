@@ -5,9 +5,11 @@ export const getBorrow = async (req, res) => {
         const borrows = await Borrow.find();
         if (borrows.length > 0) {
             res.status(200).json(borrows);
+            console.log("Borrow data retrieved successfully");
         }
         else {
             res.status(404).json({ message: "No borrow data found" });
+            console.log("No borrow data found");
         }
     }
     catch (error) {

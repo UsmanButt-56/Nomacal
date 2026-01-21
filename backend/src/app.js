@@ -2,6 +2,8 @@ import express from "express";
 import borrowRoutes from "./routes/borrow.routes.js";
 import termsRoutes from "./routes/terms.routes.js";
 import frequentlyRoutes from "./routes/frequently.routes.js";
+import loanrequestRoutes from "./routes/loanrequest.routes.js";
+import contactRoutes from "./routes/contacts.routes.js";
 import cors from "cors";
 const app = express();
 
@@ -23,4 +25,11 @@ app.use('/api/frequently' , frequentlyRoutes);
 
 // ✅ ENABLE CORS HERE
 
+//Fill form of loan Post Request
+app.use('/api/loanrequest' , loanrequestRoutes);
+
+//Contact
+app.use('/api/contact' , contactRoutes);
+
 export default app;
+

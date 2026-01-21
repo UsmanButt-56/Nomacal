@@ -8,6 +8,27 @@ import Step2 from '@/components/Get_loan/Step2';
 
 function page() {
     const [step , setStep] = useState(1);
+    const [formData, setFormData] = useState({
+    fname: '',
+    lname: '',
+    country: '',
+    postal_Code: '',
+    address: '',
+    lisence_front: null,
+    lisence_back: null,
+    loan_size: '',
+    long_term: '',
+    user_signed: null,
+    //2nd page
+    email: '',
+    bank_name: '',
+    account_number: '',
+    iban_code: '',
+    swift_code: '',
+    branch_Number: '',
+    Transit_Number: '',
+    confirm : false
+  });
     return (
         <div>
             <div className='max-w-[1400px] mx-auto py-10 lg:py-20 px-3'>
@@ -39,13 +60,17 @@ function page() {
                 {
                     step === 1 && 
                     (
-                        <Step1 setStep = {setStep}/>
+                        <Step1 setStep = {setStep}
+                            formData={formData}
+                            setFormData={setFormData} />
                     )
                 }
                 {
                     step === 2 && 
                     (
-                        <Step2 />
+                        <Step2 setStep={setStep}
+                            formData={formData}
+                            setFormData={setFormData} />
                     )
                 }
 

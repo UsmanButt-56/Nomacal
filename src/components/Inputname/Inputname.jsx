@@ -2,20 +2,26 @@
 import React,{useState} from 'react'
 import { Eye , X , EyeOff} from 'lucide-react';
 
-function Inputname({ name , label , type , placeholder , onChange , value}) {
+function Inputname({ name , label , type , placeholder , onChange , value , bgColor}) {
   //const [value , setValue] = useState(" ");
   const [passwordShow , setPasswordShow] = useState(false);
 
   const removeInfo = () => 
   {
     console.log("remove info");
-    setValue(value.slice(0 , -1));
+    const newValue = value.slice(0 , -1);
+    onChange({target: {name, value: newValue}});
+  }
+  const alpha = () => 
+  {
+    console.log("remove info");
   }
   return (
     <div>
       <h1 className="font-['InterTight'] font-medium text-[18px] leading-[20px] text-[#000000] mt-3">{label} *</h1>
       <div className='relative lg:my-3'>
-        <input type={type === "password" ? (passwordShow ? 'text' : 'password') : type} name={name} placeholder={placeholder} value={value} onChange={onChange} className="font-['InterTight'] w-full bg-[#F5F5F5] rounded-md h-[50px] lg:h-[60px] ps-3 pe-15 outline-none "/>
+        <input type={type === "password" ? (passwordShow ? 'text' : 'password') : type} name={name} placeholder={placeholder} value={value} onChange={onChange} className={`font-['InterTight'] w-full ${bgColor} rounded-md h-[50px] lg:h-[60px] ps-3 pe-15 outline-none `} />
+          {/* ${bgColor ? `bg-[${bgColor}]` : 'bg-white'}  */}
         <div className='absolute right-4 top-4 cursor-pointer'>
           {
             type ==="password" ? (
