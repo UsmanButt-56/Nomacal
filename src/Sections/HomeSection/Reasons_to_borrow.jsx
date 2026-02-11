@@ -26,11 +26,11 @@ function Reasons_to_borrow() {
     if (Array.isArray(data)) {
       setBorrow(data);
     } else {
-      console.error("Unexpected data:", data);
+      // API failed, using fallback data
       setBorrow(reasons); // fallback to static data
     }
   } catch (error) {
-    console.error("Error fetching borrows", error);
+    // API failed, using fallback data
     setBorrow(reasons);
   }
 };
