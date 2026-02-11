@@ -46,3 +46,6 @@ next-env.d.ts
 ../../backend/
 ../../backend/node_modules/
 ../../backend/src
+
+/node_modules
+/backend/node_modules
