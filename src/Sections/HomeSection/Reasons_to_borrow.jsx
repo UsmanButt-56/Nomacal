@@ -8,7 +8,7 @@ function Reasons_to_borrow() {
     {
         try
         {
-            const response = await fetch('http://localhost:5000/api/borrow/getborrow');
+            const response = await fetch('nomacal-production.up.railway.app/borrow/getborrow');
             const data = await response.json();
             console.log("Borrow data" , data);
             setBorrow(data);
