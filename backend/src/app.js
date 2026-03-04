@@ -31,5 +31,9 @@ app.use('/api/loanrequest' , loanrequestRoutes);
 //Contact
 app.use('/api/contact' , contactRoutes);
 
+app.get('/health', (req, res) => {
+  res.send('Server is alive!');
+});
+
 export default app;
 
