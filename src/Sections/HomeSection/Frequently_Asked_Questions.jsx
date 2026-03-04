@@ -16,7 +16,7 @@ function Frequently_Asked_Questions() {
     {
         try 
         {
-            const response = await fetch('http://localhost:5000/api/frequently/getFrequently');
+            const response = await fetch('https://nomacal-production.up.railway.app/api/frequently/getFrequently');
             const data = await response.json();
             setFaqs(data);
             console.log("Fetched data :" , data);
