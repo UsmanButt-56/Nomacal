@@ -9,7 +9,7 @@ const app = express();
 
 // ✅ Enable CORS for your frontend
 app.use(cors({
-  origin: "http://localhost:3000", // allow Next.js frontend
+  origin: "*", // Allow all origins for now; restrict to your domain in production
   methods: ["GET", "POST", "PUT", "DELETE"], // allowed HTTP methods
   credentials: true // optional if you use cookies/auth
 }));
