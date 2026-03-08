@@ -3,8 +3,6 @@ import React,{useState} from 'react'
 import Image from 'next/image';
 import Inputname from '@/components/Inputname/Inputname';
 import LongButton from '@/components/button/LongButton';
-// import { useSignUp } from "@clerk/nextjs";
-// import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/firebaseConfig";
@@ -12,9 +10,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 function page() {
   const router = useRouter();
-  //const { isLoaded, signUp, setActive } = useSignUp();
   const [loading , setLoading] = useState(false);
-  //console.log("🧩 Clerk Connected:", isLoaded);
 
   const [formData , setFormData] = useState({
     fname : '',
@@ -115,7 +111,6 @@ const onhandleSubmit = async (e) => {
                 </div>
 
                 <div className='my-1 md:my-4 xl:my-20'>
-                  {/* <div id="clerk-captcha"></div> */}
                   <button
                 type="submit"
                 disabled={loading}
