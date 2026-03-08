@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from '../components/navbar/Navbar';
 import NavbarWrapper from "@/components/navbar/NavbarWrapper";
-import { ClerkProvider } from '@clerk/nextjs'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "@/components/footer/Footer";
@@ -19,7 +18,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         
@@ -31,6 +29,5 @@ export default function RootLayout({ children }) {
          <Footer />
       </body>
     </html>
-    </ClerkProvider>
   );
 }
