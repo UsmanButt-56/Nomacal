@@ -7,17 +7,25 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "@/firebase/firebaseConfig";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify';
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/userSlice";
+import { getUserData } from "@/utils/getUserData";
 
 function page() {
   const [email , setEmail] = useState(" ");
   const [password , setPassword] = useState(" ");
   const router = useRouter();
+
+  const dispatch = useDispatch();
+
   const onhandlelogin = async (e) =>
   {
     e.preventDefault();
     try
     {
-      await signInWithEmailAndPassword(auth , email , password);
+      const res = await signInWithEmailAndPassword(auth , email , password);
+      const userData = await getUserData(res.user.uid);
+      dispatch(setUser(userData));
       toast.success("Login successful");
       router.push('/');
     }
