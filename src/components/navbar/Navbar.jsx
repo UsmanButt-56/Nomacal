@@ -5,6 +5,9 @@ import Button from '../button/Button';
 import profile from '../../../public/icons/profile.png';
 import { FaBars } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import useAuthRedirect from '@/hooks/useAuthRedirect';
+
 function page() {
   const pathname = usePathname();
   const nav = [
@@ -14,6 +17,9 @@ function page() {
     { id : 4 , name : "Contact Us" , link : "/contact"},
     { id : 5 , name : "Blog" , link : "/blog"},
   ]
+  const user = useSelector((state) => state.user.user);
+  console.log("User data is ",user);
+  const { gotoLoan } = useAuthRedirect();
   return (
     <div className='max-w-[1800px] mx-auto px-2 py-5'>
     <div className='h-[75px] bg-[#FFFFFF] rounded-[50px] my-[0px] flex mx-auto '>
@@ -43,8 +49,8 @@ function page() {
                 )
               })
             }
-            <Button text="Get loan now" backgroundcolor="bg-black" textColor="text-white" />
-            <Button text="John Smith" backgroundcolor="bg-[#E7E7E7]" textColor="text-[#000000]" image={profile}/>
+            <Button text="Get loan now" backgroundcolor="bg-black" textColor="text-white" onClick={gotoLoan} />
+            <Button text={user ? `${user.fname} ${user.lname}` : "Guest"} backgroundcolor="bg-[#E7E7E7]" textColor="text-[#000000]" image={profile}/>
           </ul>
           <div className='flex lg:hidden'>
             <FaBars className="w-8 h-8"/>

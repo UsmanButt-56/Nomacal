@@ -5,6 +5,10 @@ import NavbarWrapper from "@/components/navbar/NavbarWrapper";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "@/components/footer/Footer";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
+import ClientWrapper from "./ClientWrapper/page";
+//import usePathname from "next/navigation";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,16 +21,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  //const pathname = usePathname();
+  //const hideLayoutPaths = pathname === '/login' || pathname === '/signup' ;
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        
-        {/* <Navbar /> */}
-        <NavbarWrapper />
-        
-        {children}
-        <ToastContainer position="top-right" autoClose={3000} />
-         <Footer />
+        {/* <Provider store={store}> */}
+        <ClientWrapper>
+          {/* <Navbar /> */}
+          <NavbarWrapper />
+          {children}
+          {/* {children}
+          <ToastContainer position="top-right" autoClose={3000} /> */}
+          <Footer />
+          </ClientWrapper>
+        {/* </Provider> */}
       </body>
     </html>
   );

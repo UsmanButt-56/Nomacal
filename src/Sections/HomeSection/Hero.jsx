@@ -4,10 +4,22 @@ import Image from 'next/image';
 import Button from '@/components/button/Button';
 import { useRouter } from 'next/navigation';
 import NavbarWrapper from '@/components/navbar/NavbarWrapper';
+import { useSelector } from "react-redux";
+
 function Hero() {
   const router = useRouter();
+  const user = useSelector((state) => state.user.user);
+  console.log("User data is ",user);
+  
   const movetoloan = () => {
-    router.push('/get-loan-now');
+    if(user)
+    {
+      router.push('/get-loan-now');
+    }
+    else
+    {
+      router.push('/login');
+    }
   }
   return (
     <div className=''>
