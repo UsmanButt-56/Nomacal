@@ -1,1 +1,0 @@
-// Middleware removed - using Firebase for authentication instead
