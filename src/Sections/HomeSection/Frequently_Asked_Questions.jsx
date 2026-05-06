@@ -16,10 +16,10 @@ function Frequently_Asked_Questions() {
     {
         try 
         {
-            const response = await fetch('https://nomacal-production.up.railway.app/api/frequently/getFrequently');
+            const response = await fetch('/api/frequently');
             const data = await response.json();
             setFaqs(data);
-            console.log("Fetched data :" , data);
+            console.log("Frequently data: ", data);
         }
         catch (error)
         {
@@ -29,6 +29,7 @@ function Frequently_Asked_Questions() {
 
     useEffect(() => {
         getFaqs();
+        console.log("FAQs data: ", faqs);
     } , [])
 
     return (

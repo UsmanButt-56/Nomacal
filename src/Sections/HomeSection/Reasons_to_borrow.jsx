@@ -1,9 +1,9 @@
 'use client';
-import React,{useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { reasons } from '../../data/staticData';
 
 function Reasons_to_borrow() {
-    const [borrow , setBorrow] = useState([]);
+    const [borrow, setBorrow] = useState([]);
     // const getBorrows = async () =>
     // {
     //     try
@@ -20,25 +20,22 @@ function Reasons_to_borrow() {
     // }
 
     const getBorrows = async () => {
-  try {
-    const response = await fetch('https://nomacal-production.up.railway.app/api/borrow/getborrow');
-    const data = await response.json();
-    if (Array.isArray(data)) {
-      setBorrow(data);
-    } else {
-      // API failed, using fallback data
-      setBorrow(reasons); // fallback to static data
-    }
-  } catch (error) {
-    // API failed, using fallback data
-    setBorrow(reasons);
-  }
-};
+        try 
+        {
+            const response = await fetch('/api/borrow');
+            const data = await response.json();
+            setBorrow(data);    
+        }
+        catch (error) 
+        {
+            console.error('Error fetching borrows:', error);
+        }
+    };
 
 
     useEffect(() => {
         getBorrows();
-    } , [])
+    }, []);
 
     return (
         <div className='bg-black text-white px-5 lg:px-10'>
@@ -52,9 +49,9 @@ function Reasons_to_borrow() {
                 <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 mt-10 lg:mt-20 mb-10'>
                     {
                         borrow.map((item) => (
-                            <div key={item.id} className='flex flex-col gap-2'>
+                            <div key={item._id} className='flex flex-col gap-2'>
                                 <h1 className="font-['InterTight'] font-medium text-[10px] leading-[12px] md:text-[16px] md:leading-[22px] lg:text-[18px] lg:leading-[38px] xl:text-[24px] xl:leading-[100%]">{item.title}</h1>
-                                <p className="font-['InterTight'] font-normal text-[10px] leading-[12px] md:text-[12px] md:leading-[22px] lg:text-[14px] lg:leading-[38px] xl:text-[16px] xl:leading-[38px] text-[#FFFFFF80] opacity-50">{item.desc}</p>
+                                <p className="font-['InterTight'] font-normal text-[10px] leading-[12px] md:text-[12px] md:leading-[22px] lg:text-[14px] lg:leading-[38px] xl:text-[16px] xl:leading-[38px] text-[#FFFFFF80] opacity-50">{item.description}</p>
                             </div>
                         ))
                     }
